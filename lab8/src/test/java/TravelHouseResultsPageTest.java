@@ -90,7 +90,9 @@ public class TravelHouseResultsPageTest extends CommonConditions {
 
         final TravelHouseResultsPage travelHouseResultsPage = travelHouseHomePage.openPage()
                 .searchTours()
-                .chooseFiveStarsCategoryOfHotel();
+                .chooseFiveStarsCategoryOfHotel()
+                .waitStalenessOfHotelStars();
+
 
         final int amountOfHotelStarsInOfferedTours = travelHouseResultsPage.amountOfHotelStars();
 

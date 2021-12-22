@@ -28,7 +28,7 @@ public class TravelHouseResultsPage extends AbstractPage {
 
     private static By maxPriceInputLocator = By.xpath("(//div[contains(@class, 'input-group-sm')])[2]/input[2]");
 
-    private static By fiveStarsCategoryOfHotelLocator = By.xpath("(//div[@class = 'filter-panel-element'])[2]//div[contains(@class, 'custom-checkbox')][1]");
+    private static By threeStarsCategoryOfHotelLocator = By.xpath("(//div[@class = 'filter-panel-element'])[2]//div[contains(@class, 'custom-checkbox')][3]");
     private static By hotelStarsFieldLocator = By.xpath("(//span[@class = 'hotel-category-stars text-base'])[3]");
     private static By hotelStarsLocator = By.xpath("(//span[@class = 'hotel-category-stars text-base'])[3]/*[name()='svg']");
 
@@ -99,8 +99,8 @@ public class TravelHouseResultsPage extends AbstractPage {
                 .replace("RUB", "").replace(" ", "");
     }
 
-    public TravelHouseResultsPage chooseFiveStarsCategoryOfHotel() {
-        Waits.waitElementToBeClickable(driver, fiveStarsCategoryOfHotelLocator).click();
+    public TravelHouseResultsPage chooseThreeStarsCategoryOfHotel() {
+        Waits.waitElementToBeClickable(driver, threeStarsCategoryOfHotelLocator).click();
         return this;
     }
 

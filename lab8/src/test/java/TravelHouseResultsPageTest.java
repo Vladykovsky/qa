@@ -12,7 +12,7 @@ public class TravelHouseResultsPageTest extends CommonConditions {
     Tour testTour = TourCreator.withEmptyPlaceOfDeparture();
     final String WRONG_DESTINATION = "Pharaoh Egypt";
     final String MAX_PRICE = "2500";
-    final int HOTEL_STARS = 5;
+    final int HOTEL_STARS = 3;
     final int RATING_OF_HOTEL = 4;
 
     @Test
@@ -90,7 +90,7 @@ public class TravelHouseResultsPageTest extends CommonConditions {
 
         final TravelHouseResultsPage travelHouseResultsPage = travelHouseHomePage.openPage()
                 .searchTours()
-                .chooseFiveStarsCategoryOfHotel();
+                .chooseThreeStarsCategoryOfHotel();
 
         final int amountOfHotelStarsInOfferedTours = travelHouseResultsPage.amountOfHotelStars();
 

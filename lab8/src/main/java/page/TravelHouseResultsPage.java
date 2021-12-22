@@ -73,12 +73,6 @@ public class TravelHouseResultsPage extends AbstractPage {
         return this;
     }
 
-    public TravelHouseResultsPage waitStalenessOfHotelStarsField() {
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS);
-        wait.until(ExpectedConditions.stalenessOf(Waits.waitVisibilityOfElementLocated(driver, hotelStarsFieldLocator)));
-        return this;
-    }
-
     public TravelHouseResultsPage waitStalenessOfTourPriceWithFilter() {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS);
         wait.until(ExpectedConditions.stalenessOf(Waits.waitVisibilityOfElementLocated(driver, tourPriceWithFilter)));

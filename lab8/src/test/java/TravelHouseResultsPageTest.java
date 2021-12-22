@@ -48,7 +48,7 @@ public class TravelHouseResultsPageTest extends CommonConditions {
         final int tourPriceWithOnePassenger = Integer.parseInt(travelHouseResultsPage
                 .removePassenger()
                 .searchNewTours()
-                .waitStalenessOfElement()
+                .waitStalenessOfTourPrice()
                 .copyTourPrice());
 
         assertThat(tourPriceWithOnePassenger, is(lessThan(tourPriceWithTwoPassengers)));
@@ -95,11 +95,10 @@ public class TravelHouseResultsPageTest extends CommonConditions {
         final int amountOfHotelStarsInOfferedTours = travelHouseResultsPage.amountOfHotelStars();
 
         assertThat(amountOfHotelStarsInOfferedTours, is(equalTo(HOTEL_STARS)));
-
     }
 
     @Test
-    void amountOfHotelStarsInOfferedToursIsEqualToOrGreaterThenChosenRatingTest() {
+    void amountOfHotelStarsInOfferedToursIsEqualToOrGreaterThanChosenRatingTest() {
 
         TravelHouseHomePage travelHouseHomePage = new TravelHouseHomePage(driver);
 
@@ -110,6 +109,45 @@ public class TravelHouseResultsPageTest extends CommonConditions {
         final int amountOfHotelStarsInOfferedTours = travelHouseResultsPage.amountOfHotelStars();
 
         assertThat(amountOfHotelStarsInOfferedTours, is(greaterThanOrEqualTo(RATING_OF_HOTEL)));
+    }
 
+    @Test
+    void tourPriceWithBabyIsGreaterThanWithoutTest() {
+
+        TravelHouseHomePage travelHouseHomePage = new TravelHouseHomePage(driver);
+
+        TravelHouseResultsPage travelHouseResultsPage = travelHouseHomePage
+                .openPage()
+                .enterLocationTo(testTour)
+                .chooseLocationTo()
+                .searchTours();
+
+        final int tourPriceWithoutBaby = Integer.parseInt(travelHouseResultsPage.copyTourPrice());
+
+        final int tourPriceWithBaby = Integer.parseInt(travelHouseResultsPage
+                .addBaby()
+                .searchNewTours()
+                .waitStalenessOfTourPrice()
+                .copyTourPrice());
+
+        assertThat(tourPriceWithoutBaby, is(lessThan(tourPriceWithBaby)));
+    }
+
+    @Test
+    void tourPriceInRussianRublesGreaterThanInBelorussianTest() {
+
+        TravelHouseHomePage travelHouseHomePage = new TravelHouseHomePage(driver);
+
+        TravelHouseResultsPage travelHouseResultsPage = travelHouseHomePage
+                .openPage()
+                .searchTours();
+
+        final int tourPriceInBelorussianRubles = Integer.parseInt(travelHouseResultsPage.copyTourPriceWithFilter());
+        final int tourPriceInRussianRubles = Integer.parseInt(travelHouseResultsPage
+                .convertTourPriceToRussianRubles()
+                .waitStalenessOfTourPriceWithFilter()
+                .copyTourPriceInRussianRubles());
+
+        assertThat(tourPriceInBelorussianRubles, is(lessThan(tourPriceInRussianRubles)));
     }
 }

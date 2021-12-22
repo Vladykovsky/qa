@@ -29,12 +29,6 @@ public class TravelHouseHomePage extends AbstractPage {
         return this;
     }
 
-    public TravelHouseHomePage chooseLocationFrom() {
-        Waits.waitElementToBeClickable(driver, locationFromLocator).click();
-        Waits.waitVisibilityOfElementLocated(driver, locationFromChoiceLocator).click();
-        return this;
-    }
-
     public TravelHouseHomePage enterLocationTo(Tour tour) {
         Waits.waitElementToBeClickable(driver, locationToLocator).click();
         Waits.waitVisibilityOfElementLocated(driver, locationToInputLocator).sendKeys(tour.getDestination());

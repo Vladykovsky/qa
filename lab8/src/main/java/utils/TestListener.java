@@ -18,9 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class TestListener implements ITestListener {
     private Logger log = LogManager.getRootLogger();
 
-    public void onTestStart(ITestResult iTestResult) {
-
-    }
+    public void onTestStart(ITestResult iTestResult) { log.info("Test started"); }
 
     public void onTestSuccess(ITestResult iTestResult) {
         saveScreenshot();
@@ -30,21 +28,15 @@ public class TestListener implements ITestListener {
         saveScreenshot();
     }
 
-    public void onTestSkipped(ITestResult iTestResult) {
+    public void onTestSkipped(ITestResult iTestResult) { log.info("Test skipped"); }
 
-    }
-
-    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
-    }
+    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) { log.info("Test failed but within success percentage"); }
 
     public void onStart(ITestContext iTestContext) {
 
     }
 
-    public void onFinish(ITestContext iTestContext) {
-
-    }
+    public void onFinish(ITestContext iTestContext) { log.info("Tests finished"); }
 
     private void saveScreenshot(){
         File screenCapture = ((TakesScreenshot) DriverSingleton
